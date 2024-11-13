@@ -1,11 +1,9 @@
 package ljh.reservation;
 
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -15,16 +13,11 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
@@ -61,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         poster2 = findViewById(R.id.poster2);
         poster3 = findViewById(R.id.poster3);
 
-        movieDay = "11월23일";
+        movieDay = LocalDate.now().format(DateTimeFormatter.ofPattern("MM월 dd일"));
 
         String[] movies = {movieDay + ": 베놈", movieDay + ": 청설", movieDay + ": 비긴어게인"};
 
@@ -78,13 +71,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnPrev.setOnClickListener(e -> {
-            vf.showPrevious();
-        });
+        btnPrev.setOnClickListener(e -> vf.showPrevious());
 
-        btnNext.setOnClickListener(e -> {
-            vf.showNext();
-        });
+        btnNext.setOnClickListener(e -> vf.showNext());
 
         tp.setOnTimeChangedListener((view, hourOfDay, minute) -> {
             hour = hourOfDay;
@@ -101,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             String inputMovieDay = tk.nextToken();
             movieName = tk.nextToken().trim();
+
             if (!inputMovieDay.equals(movieDay)) {
-                Toast.makeText(this, "해당 날짜에 상영되는 영화가 없습니다", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "해당 날짜에는 영화를 상영하지 않습니다", Toast.LENGTH_SHORT).show();
                 return false;
             } else if (!(movieName.equals("베놈") || movieName.equals("청설") || movieName.equals("비긴어게인"))) {
                 Toast.makeText(this, "올바른 영화 이름을 적어주세요", Toast.LENGTH_SHORT).show();
