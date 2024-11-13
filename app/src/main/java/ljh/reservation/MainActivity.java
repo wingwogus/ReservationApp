@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         poster2 = findViewById(R.id.poster2);
         poster3 = findViewById(R.id.poster3);
 
-        ;
         movieDay = LocalDate.now().format(DateTimeFormatter.ofPattern("MM월 dd일"));
 
         String[] movies = {movieDay + ": 베놈", movieDay + ": 청설", movieDay + ": 비긴어게인"};
@@ -72,13 +71,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnPrev.setOnClickListener(e -> {
-            vf.showPrevious();
-        });
+        btnPrev.setOnClickListener(e -> vf.showPrevious());
 
-        btnNext.setOnClickListener(e -> {
-            vf.showNext();
-        });
+        btnNext.setOnClickListener(e -> vf.showNext());
 
         tp.setOnTimeChangedListener((view, hourOfDay, minute) -> {
             hour = hourOfDay;
