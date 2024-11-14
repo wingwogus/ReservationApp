@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 divRes.setVisibility(View.INVISIBLE);
             }
+            System.out.println("로그인 기능");
         });
 
         btnPrev.setOnClickListener(e -> vf.showPrevious());
