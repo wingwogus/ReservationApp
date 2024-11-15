@@ -1,6 +1,5 @@
 package ljh.reservation;
 
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +16,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
@@ -63,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> movieAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, movies);
         actv.setAdapter(movieAdapter);
 
-        result.setTextColor(Color.GREEN);
-
         //포스트 보기 버튼 클릭 시 예약 체크 메소드
         btnShow.setOnClickListener(e -> {
             if (checkReservation(actv.getText().toString())) {
@@ -86,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시mm분");
             String date = LocalTime.of(hour, min).format(formatter);
-            result.setText(movieName + ": " + movieDay +" " + date + "으로 예약되었습니다.");
+            result.setText(String.format("%s: %s %s으로 예약되었습니다.", movieName, movieDay, date));
         });
     }
 

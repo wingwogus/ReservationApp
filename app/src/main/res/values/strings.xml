@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Reservation</string>
+    <string name="prev">이전</string>
+    <string name="next">다음</string>
+    <string name="poster">포스터 보기</string>
+    <string name="timeSelect">시간을 예약하세요</string>
+    <string name="hint">~월~일:영화이름</string>
 </resources>
