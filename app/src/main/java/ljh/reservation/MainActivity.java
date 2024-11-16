@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
             min = minute;
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시mm분");
-            String date = LocalTime.of(hour, min).format(formatter);
-            result.setText(String.format("%s: %s %s으로 예약되었습니다.", movieName, movieDay, date));
+            String movieDate = LocalTime.of(hour, min).format(formatter);
+            result.setText(String.format("%s: %s %s으로 예약되었습니다.", movieName, movieDay, movieDate));
         });
     }
 
