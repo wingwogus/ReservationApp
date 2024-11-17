@@ -16,8 +16,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
@@ -80,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
             hour = hourOfDay;
             min = minute;
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시mm분");
-            String movieDate = LocalTime.of(hour, min).format(formatter);
+            String movieDate = String.format("%02d시%02d분", hour, min);
             result.setText(String.format("%s: %s %s으로 예약되었습니다.", movieName, movieDay, movieDate));
         });
     }
